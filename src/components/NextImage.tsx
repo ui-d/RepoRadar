@@ -27,7 +27,7 @@ type NextImageProps = {
  * @param rest other props
  * @param useSkeleton add background with pulse animation, don't use it if image is transparent
  */
-export default function NextImage({
+export function NextImage({
     useSkeleton = false,
     src,
     width,
