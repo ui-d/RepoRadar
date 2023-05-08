@@ -9,7 +9,10 @@ const nextConfig = {
 
     // Uncoment to add domain whitelist
     images: {
-        domains: ['avatars.githubusercontent.com'],
+        domains: [
+            'avatars.githubusercontent.com',
+            'https://avatars.githubusercontent.com/u/6831355?v=4',
+        ],
     },
 
     // SVGR

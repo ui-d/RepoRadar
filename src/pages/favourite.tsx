@@ -2,22 +2,13 @@ import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 
-import { getRepos } from '@/lib/api'
-
 import { Container } from '@/components/containers/Container'
 import { Layout } from '@/components/layout/Layout'
-import { ListItem } from '@/components/list/ListItem'
 import { Navbar } from '@/components/navigation/navbar'
 import { Seo } from '@/components/Seo'
 import { Tabs } from '@/components/tabs/Tabs'
 
-import { Repo } from '@/types/GithubApiResponse'
-
-interface HomePageProps {
-    repos: Repo[]
-}
-
-const HomePage = ({ repos }: HomePageProps): JSX.Element => {
+const Favourite = (): JSX.Element => {
     const [isLoading, setIsLoading] = useState(true)
 
     const session = useSession()
@@ -49,7 +40,7 @@ const HomePage = ({ repos }: HomePageProps): JSX.Element => {
                 <>
                     <Navbar />
                     <h1 className="text-center text-3xl font-bold">
-                        Welcome to trial project for Veed.io
+                        You need to login to see your favourite repos
                     </h1>
                 </>
             ) : (
@@ -62,23 +53,23 @@ const HomePage = ({ repos }: HomePageProps): JSX.Element => {
                                 <Tabs />
                             </Container>
                             <Container glass>
-                                <ul className="flex flex-col gap-5 px-10 pb-10 pt-1 xl:px-4">
-                                    {repos.map((repo) => (
-                                        <ListItem
-                                            key={repo.id}
-                                            name={repo.name}
-                                            description={repo.description}
-                                            stars={repo.stargazers_count}
-                                            forks={repo.forks}
-                                            url={repo.html_url}
-                                            issues={repo.open_issues}
-                                            owner={repo.owner.login}
-                                            ownerImage={repo.owner.avatar_url}
-                                            ownerUrl={repo.owner.html_url}
-                                            topics={repo.topics.slice(0, 3)}
-                                        />
-                                    ))}
-                                </ul>
+                                {/*<ul className="flex flex-col gap-5 px-10 pb-10 pt-1 xl:px-4">*/}
+                                {/*    {repos.map((repo) => (*/}
+                                {/*        <ListItem*/}
+                                {/*            key={repo.id}*/}
+                                {/*            name={repo.name}*/}
+                                {/*            description={repo.description}*/}
+                                {/*            stars={repo.stargazers_count}*/}
+                                {/*            forks={repo.forks}*/}
+                                {/*            url={repo.html_url}*/}
+                                {/*            issues={repo.open_issues}*/}
+                                {/*            owner={repo.owner.login}*/}
+                                {/*            ownerImage={repo.owner.avatar_url}*/}
+                                {/*            ownerUrl={repo.owner.html_url}*/}
+                                {/*            topics={repo.topics.slice(0, 3)}*/}
+                                {/*        />*/}
+                                {/*    ))}*/}
+                                {/*</ul>*/}
                             </Container>
                         </>
                     </main>
@@ -88,14 +79,4 @@ const HomePage = ({ repos }: HomePageProps): JSX.Element => {
     )
 }
 
-export default HomePage
-
-export async function getStaticProps() {
-    const repos = await getRepos()
-
-    return {
-        props: {
-            repos,
-        },
-    }
-}
+export default Favourite
