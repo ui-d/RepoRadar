@@ -1,6 +1,16 @@
 import * as React from 'react'
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-    // Put Header or Footer Here
-    return <>{children}</>
+import { Navbar } from '@/components/navigation/navbar'
+
+interface props {
+    children: React.ReactNode
+}
+
+export function Layout({ children }: props): JSX.Element {
+    return (
+        <>
+            <Navbar />
+            {children}
+        </>
+    )
 }
