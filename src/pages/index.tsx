@@ -3,7 +3,7 @@ import * as React from 'react'
 import { useEffect, useState } from 'react'
 
 import { getRepos } from '@/lib/api'
-import { useFavorites } from '@/hooks/useFavorites'
+import { useRepos } from '@/hooks/useRepos'
 
 import { Container } from '@/components/containers/Container'
 import { SelectElement } from '@/components/forms/select'
@@ -28,7 +28,7 @@ const HomePage = ({ repos }: HomePageProps): JSX.Element => {
         handleAddRemoveToFavorite,
         updateFavoriteStatus,
         filterReposOfSpecificLanguage,
-    } = useFavorites(repos)
+    } = useRepos(repos)
 
     const session = useSession()
     const supabase = useSupabaseClient()

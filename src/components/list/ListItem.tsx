@@ -48,8 +48,10 @@ export function ListItem({
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col justify-center pl-4">
-                    <div className="stat-value text-base">{owner}</div>
+                <div className="flex flex-col justify-center overflow-hidden pl-4">
+                    <div className="stat-value  truncate text-base">
+                        {owner}
+                    </div>
                     <div className="stat-desc text-accent">
                         <Link href={ownerUrl}>Follow</Link>{' '}
                     </div>
@@ -88,7 +90,7 @@ export function ListItem({
                         </>
                     )}
                 </div>
-                <div className="stat-value text-primary mb-2 truncate text-3xl lg:text-2xl">
+                <div className="stat-value text-primary mb-2 truncate text-2xl sm:text-4xl lg:text-2xl">
                     <Link className="transition hover:text-gray-600" href={url}>
                         {name}{' '}
                         {!!language && (

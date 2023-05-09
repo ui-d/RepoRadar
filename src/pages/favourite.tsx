@@ -3,7 +3,7 @@ import * as React from 'react'
 import { useEffect, useState } from 'react'
 
 import { getRepos } from '@/lib/api'
-import { useFavorites } from '@/hooks/useFavorites'
+import { useRepos } from '@/hooks/useRepos'
 
 import { Container } from '@/components/containers/Container'
 import { Layout } from '@/components/layout/Layout'
@@ -21,7 +21,7 @@ interface FavouriteProps {
 
 const Favourite = ({ repos }: FavouriteProps): JSX.Element => {
     const [isLoading, setIsLoading] = useState(true)
-    const { favorites, handleAddRemoveToFavorite } = useFavorites(repos)
+    const { favorites, handleAddRemoveToFavorite } = useRepos(repos)
 
     const session = useSession()
     const supabase = useSupabaseClient()

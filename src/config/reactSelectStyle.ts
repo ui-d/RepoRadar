@@ -12,10 +12,14 @@ export const customReactSelectStyles: StylesConfig<OptionType, false> = {
         minHeight: '40px',
         fontSize: '16px',
         width: '200px',
+        background: '#909090',
+        borderColor: '#5b5b5b',
     }),
     menu: (provided) => ({
         ...provided,
         fontSize: '16px',
+        background: '#909090',
+        borderColor: '#5b5b5b',
     }),
     option: (provided, state) => ({
         ...provided,
