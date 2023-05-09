@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useState } from 'react'
 import Select, { SingleValue } from 'react-select'
 
+import { customReactSelectStyles } from '@/config/reactSelectStyle'
+
 import { Repo } from '@/types/GithubApiResponse'
 
 interface SelectElementProps {
     repos: Repo[]
-    filterReposOfSpecificLanguage: (language: string | null) => void
+    filterReposOfSpecificLanguage: (language: string) => void
 }
 
 interface Option {
@@ -33,7 +35,7 @@ export const SelectElement = ({
     }, [languages])
 
     const handleLanguageChange = (selectedOption: SingleValue<Option>) => {
-        if (selectedOption) {
+        if (selectedOption && selectedOption.value !== null) {
             filterReposOfSpecificLanguage(selectedOption.value)
         }
     }
@@ -43,6 +45,7 @@ export const SelectElement = ({
             onChange={(selected) => handleLanguageChange(selected)}
             placeholder="All"
             options={options}
+            styles={customReactSelectStyles}
         />
     )
 }

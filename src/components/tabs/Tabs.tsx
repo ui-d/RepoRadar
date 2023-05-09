@@ -4,7 +4,7 @@ import CustomLink from '@/components/links/Link'
 
 export function Tabs(): JSX.Element {
     return (
-        <div className="tabs pl-6">
+        <div className="tabs">
             <CustomLink
                 href="/"
                 activeClassName="tab tab-bordered text-yellow-200"
