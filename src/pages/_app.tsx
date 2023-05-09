@@ -10,7 +10,7 @@ function MyApp({
     pageProps,
 }: AppProps<{
     initialSession: Session
-}>) {
+}>): JSX.Element {
     // Create a new supabase browser client on every first render.
     const [supabaseClient] = useState(() => createBrowserSupabaseClient())
 

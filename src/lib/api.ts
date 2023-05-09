@@ -1,16 +1,13 @@
 import axios, { AxiosResponse } from 'axios'
 
+import { getLastWeekDate } from '@/utils/helpers'
+
 import { Repo } from '@/types/GithubApiResponse'
 
 export const getRepos = async (): Promise<Repo[]> => {
-    const ltr = new Date()
-    ltr.setDate(ltr.getDate() - 7)
-    const ltrDate = ltr.toISOString().split('T')[0]
-
-    // use URLSearchParams constructor to build the URL
     const baseURL = 'https://api.github.com/search/repositories'
     const searchParams = new URLSearchParams({
-        q: `created:>${ltrDate}`,
+        q: `created:>${getLastWeekDate()}`,
         sort: 'stars',
         order: 'desc',
     })

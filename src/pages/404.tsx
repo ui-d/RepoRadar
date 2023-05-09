@@ -4,7 +4,7 @@ import { RiAlarmWarningFill } from 'react-icons/ri'
 import { Layout } from '@/components/layout/Layout'
 import { Seo } from '@/components/Seo'
 
-export default function NotFoundPage() {
+export default function NotFoundPage(): JSX.Element {
     return (
         <Layout>
             <Seo templateTitle="Not Found" />

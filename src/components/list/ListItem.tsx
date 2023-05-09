@@ -34,7 +34,7 @@ export function ListItem({
     handleAddRemoveToFavorite,
 }: ListItemProps): JSX.Element {
     return (
-        <div className="stats flex w-full max-w-full shadow">
+        <div className="stats block w-full max-w-full py-5 shadow lg:flex">
             <div className="flex w-full max-w-xs">
                 <div className="stat-figure text-secondary pl-5">
                     <div className="avatar online">
@@ -55,7 +55,7 @@ export function ListItem({
                     </div>
                 </div>
             </div>
-            <div className="stat max-w-xl overflow-hidden">
+            <div className="stat overflow-hidden lg:max-w-xl">
                 <div className="stat-figure text-primary">
                     <svg
                         onClick={handleAddRemoveToFavorite}
@@ -88,11 +88,11 @@ export function ListItem({
                         </>
                     )}
                 </div>
-                <div className="stat-value text-primary mb-2 truncate text-2xl">
+                <div className="stat-value text-primary mb-2 truncate text-3xl lg:text-2xl">
                     <Link className="transition hover:text-gray-600" href={url}>
                         {name}{' '}
                         {!!language && (
-                            <div className="badge badge-outline badge-xs">
+                            <div className="badge badge-outline badge-xs py-2">
                                 {language}
                             </div>
                         )}
@@ -103,7 +103,7 @@ export function ListItem({
                 </div>
             </div>
 
-            <div className="stat flex-1">
+            <div className="stat lg:max-w-auto max-w-[170px] flex-1">
                 <div className="stat-figure text-secondary">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

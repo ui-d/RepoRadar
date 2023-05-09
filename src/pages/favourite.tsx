@@ -61,7 +61,7 @@ const Favourite = ({ repos }: FavouriteProps): JSX.Element => {
                                 <Tabs />
                             </Container>
                             <Container glass>
-                                <ul className="flex flex-col gap-5 px-10 pb-10 pt-1 xl:px-4">
+                                <ul className="flex flex-col gap-5 pb-10 pt-1 xl:px-4">
                                     {favorites.length ? (
                                         favorites.map((repo: Repo) => (
                                             <ListItem

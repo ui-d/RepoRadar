@@ -15,7 +15,9 @@ export function Navbar(): JSX.Element {
         <header className="navbar bg-base-100 pb-24">
             <div className="navbar-start">
                 <div className="dropdown"></div>
-                <a className="btn btn-ghost text-xl normal-case">🌟 RepoRank</a>
+                <a className="btn btn-ghost text-xl normal-case">
+                    <span className="animate">🌟</span> RepoRadar
+                </a>
             </div>
 
             <div className="navbar-end">

@@ -28,16 +28,6 @@ export function Seo(props: SeoProps) {
         ? `${props.templateTitle} | ${meta.siteName}`
         : meta.title
 
-    // Use siteName if there is templateTitle
-    // but show full title if there is none
-    // !STARTERCONF Follow config for opengraph, by deploying one on https://github.com/theodorusclarence/og
-    // ? Uncomment code below if you want to use default open graph
-    // meta['image'] = openGraph({
-    //   description: meta.description,
-    //   siteName: props.templateTitle ? meta.siteName : meta.title,
-    //   templateTitle: props.templateTitle,
-    // });
-
     return (
         <Head>
             <title>{meta.title}</title>
@@ -78,10 +68,6 @@ export function Seo(props: SeoProps) {
                 </>
             )}
 
-            {/* Favicons */}
-            {favicons.map((linkProps) => (
-                <link key={linkProps.href} {...linkProps} />
-            ))}
             <meta name="msapplication-TileColor" content="#ffffff" />
             <meta
                 name="msapplication-config"
@@ -91,32 +77,3 @@ export function Seo(props: SeoProps) {
         </Head>
     )
 }
-
-// !STARTERCONF this is the default favicon, you can generate your own from https://realfavicongenerator.net/
-// ! then replace the whole /public/favicon folder and favicon.ico
-const favicons: Array<React.ComponentPropsWithoutRef<'link'>> = [
-    {
-        rel: 'apple-touch-icon',
-        sizes: '180x180',
-        href: '/favicon/apple-touch-icon.png',
-    },
-    {
-        rel: 'icon',
-        type: 'image/png',
-        sizes: '32x32',
-        href: '/favicon/favicon-32x32.png',
-    },
-    {
-        rel: 'icon',
-        type: 'image/png',
-        sizes: '16x16',
-        href: '/favicon/favicon-16x16.png',
-    },
-    { rel: 'manifest', href: '/favicon/site.webmanifest' },
-    {
-        rel: 'mask-icon',
-        href: '/favicon/safari-pinned-tab.svg',
-        color: '#00e887',
-    },
-    { rel: 'shortcut icon', href: '/favicon/favicon.ico' },
-]

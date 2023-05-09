@@ -69,7 +69,7 @@ const HomePage = ({ repos }: HomePageProps): JSX.Element => {
                     <main className="mb-52">
                         <>
                             <Container>
-                                <div className="flex justify-between">
+                                <div className="flex flex-col items-center justify-between gap-10 md:flex-row">
                                     <Tabs />
                                     <SelectElement
                                         repos={reposList}
@@ -80,7 +80,7 @@ const HomePage = ({ repos }: HomePageProps): JSX.Element => {
                                 </div>
                             </Container>
                             <Container glass>
-                                <ul className="flex flex-col gap-5 px-10 pb-10 pt-1 xl:px-4">
+                                <ul className="flex flex-col gap-5 pb-10 pt-1 xl:px-4">
                                     {reposList.map((repo: Repo) => (
                                         <ListItem
                                             key={repo.id}

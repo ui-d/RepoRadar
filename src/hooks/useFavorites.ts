@@ -40,7 +40,7 @@ export const useFavorites = (initialRepos: Repo[]) => {
     }, [initialRepos, currentLanguageFilter])
 
     const filterReposOfSpecificLanguage = useCallback(
-        (language: string) => {
+        (language: string | null) => {
             setCurrentLanguageFilter(language)
             const filteredRepos = initialRepos.filter(
                 (repo) => repo.language === language
