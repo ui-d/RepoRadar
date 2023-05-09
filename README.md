@@ -2,7 +2,7 @@
 
 Veed.io trial project
 
-[![Deployed on Render](https://img.shields.io/badge/Deployed%20on-Vercel-blue)](https://repo-radar-git-main-ui-d.vercel.app/)
+[![Deployed on Render](https://img.shields.io/badge/Deployed%20on-Vercel-blue)](https://repo-radar.vercel.app/)
 
 ## Features
 
@@ -46,7 +46,7 @@ git clone https://github.com/ui-d/RepoRadar.git
 
 ## Deployment
 
-The app is currently deployed on [Vercel](https://vercel.com/). Visit the live demo here: [https://repo-radar-git-main-ui-d.vercel.app](https://repo-radar-git-main-ui-d.vercel.app/)
+The app is currently deployed on [Vercel](https://vercel.com/). Visit the live demo here: [https://repo-radar.vercel.app/](https://repo-radar.vercel.app/)
 
 ## Optimization Recommendations
 
@@ -54,7 +54,7 @@ To fully optimize the app, consider the following changes:
 
 1. Switch to a server-side rendering (SSR) for better authentication and data fetching experience
 2. Use a database (i.e Supabase (PostgreSQL) with Prisma) to store user data and repositories
-3. Use a state management library to manage app state
+3. Use a state management library to manage app state on the client-side
 
 ## License
 
