@@ -6,6 +6,7 @@ import { getRepos } from '@/lib/api'
 import { useFavorites } from '@/hooks/useFavorites'
 
 import { Container } from '@/components/containers/Container'
+import { SelectElement } from '@/components/forms/select'
 import { Layout } from '@/components/layout/Layout'
 import { ListItem } from '@/components/list/ListItem'
 import { Loader } from '@/components/loaders/Loader'
@@ -22,8 +23,12 @@ interface HomePageProps {
 const HomePage = ({ repos }: HomePageProps): JSX.Element => {
     const [isLoading, setIsLoading] = useState<boolean>(true)
 
-    const { reposList, handleAddRemoveToFavorite, updateFavoriteStatus } =
-        useFavorites(repos)
+    const {
+        reposList,
+        handleAddRemoveToFavorite,
+        updateFavoriteStatus,
+        filterReposOfSpecificLanguage,
+    } = useFavorites(repos)
 
     const session = useSession()
     const supabase = useSupabaseClient()
@@ -64,7 +69,15 @@ const HomePage = ({ repos }: HomePageProps): JSX.Element => {
                     <main className="mb-52">
                         <>
                             <Container>
-                                <Tabs />
+                                <div className="flex justify-between">
+                                    <Tabs />
+                                    <SelectElement
+                                        repos={reposList}
+                                        filterReposOfSpecificLanguage={
+                                            filterReposOfSpecificLanguage
+                                        }
+                                    />
+                                </div>
                             </Container>
                             <Container glass>
                                 <ul className="flex flex-col gap-5 px-10 pb-10 pt-1 xl:px-4">

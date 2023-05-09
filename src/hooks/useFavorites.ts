@@ -5,6 +5,9 @@ import { Repo } from '@/types/GithubApiResponse'
 export const useFavorites = (initialRepos: Repo[]) => {
     const [reposList, setReposList] = useState<Repo[]>(initialRepos)
     const [favorites, setFavorites] = useState<Repo[]>([])
+    const [currentLanguageFilter, setCurrentLanguageFilter] = useState<
+        string | null
+    >(null)
 
     const updateFavoriteStatus = useCallback(() => {
         const data = localStorage.getItem('favorite')
@@ -23,9 +26,45 @@ export const useFavorites = (initialRepos: Repo[]) => {
                 isFavorite: false,
             }
         })
-        setReposList(updatedRepos)
+
+        if (currentLanguageFilter) {
+            const filteredRepos = updatedRepos.filter(
+                (repo) => repo.language === currentLanguageFilter
+            )
+            setReposList(filteredRepos)
+        } else {
+            setReposList(updatedRepos)
+        }
+
         setFavorites(favorite)
-    }, [initialRepos])
+    }, [initialRepos, currentLanguageFilter])
+
+    const filterReposOfSpecificLanguage = useCallback(
+        (language: string) => {
+            setCurrentLanguageFilter(language)
+            const filteredRepos = initialRepos.filter(
+                (repo) => repo.language === language
+            )
+
+            const updatedFilteredRepos = filteredRepos.map((repo) => {
+                const isExist = favorites.find(
+                    (item: Repo) => item.id === repo.id
+                )
+                if (isExist) {
+                    return {
+                        ...repo,
+                        isFavorite: true,
+                    }
+                }
+                return {
+                    ...repo,
+                    isFavorite: false,
+                }
+            })
+            setReposList(updatedFilteredRepos)
+        },
+        [initialRepos, favorites]
+    )
 
     const handleAddRemoveToFavorite = useCallback(
         (props: Repo) => {
@@ -40,7 +79,6 @@ export const useFavorites = (initialRepos: Repo[]) => {
                 localStorage.setItem('favorite', JSON.stringify(filtered))
             } else {
                 props.isFavorite = true
-                setReposList((prevState) => [...prevState, props])
                 favorite.push(props)
                 localStorage.setItem('favorite', JSON.stringify(favorite))
             }
@@ -58,5 +96,6 @@ export const useFavorites = (initialRepos: Repo[]) => {
         favorites,
         handleAddRemoveToFavorite,
         updateFavoriteStatus,
+        filterReposOfSpecificLanguage,
     }
 }
