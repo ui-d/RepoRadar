@@ -15,6 +15,7 @@ export interface Repo {
     description: null | string
     fork: boolean
     url: string
+    isFavorite?: boolean
     forks_url: string
     keys_url: string
     collaborators_url: string

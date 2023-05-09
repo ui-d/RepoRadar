@@ -3,10 +3,12 @@ import * as React from 'react'
 import { useEffect, useState } from 'react'
 
 import { getRepos } from '@/lib/api'
+import { useFavorites } from '@/hooks/useFavorites'
 
 import { Container } from '@/components/containers/Container'
 import { Layout } from '@/components/layout/Layout'
 import { ListItem } from '@/components/list/ListItem'
+import { Loader } from '@/components/loaders/Loader'
 import { Navbar } from '@/components/navigation/navbar'
 import { Seo } from '@/components/Seo'
 import { Tabs } from '@/components/tabs/Tabs'
@@ -18,10 +20,17 @@ interface HomePageProps {
 }
 
 const HomePage = ({ repos }: HomePageProps): JSX.Element => {
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState<boolean>(true)
+
+    const { reposList, handleAddRemoveToFavorite, updateFavoriteStatus } =
+        useFavorites(repos)
 
     const session = useSession()
     const supabase = useSupabaseClient()
+
+    useEffect(() => {
+        updateFavoriteStatus()
+    }, [updateFavoriteStatus])
 
     useEffect(() => {
         const { data: authListener } = supabase.auth.onAuthStateChange(() => {
@@ -36,11 +45,7 @@ const HomePage = ({ repos }: HomePageProps): JSX.Element => {
     }, [supabase.auth])
 
     if (isLoading) {
-        return (
-            <div className="pt-32 text-center text-3xl font-bold text-black">
-                Loading...
-            </div>
-        )
+        return <Loader />
     }
 
     return (
@@ -63,7 +68,7 @@ const HomePage = ({ repos }: HomePageProps): JSX.Element => {
                             </Container>
                             <Container glass>
                                 <ul className="flex flex-col gap-5 px-10 pb-10 pt-1 xl:px-4">
-                                    {repos.map((repo) => (
+                                    {reposList.map((repo: Repo) => (
                                         <ListItem
                                             key={repo.id}
                                             name={repo.name}
@@ -75,7 +80,12 @@ const HomePage = ({ repos }: HomePageProps): JSX.Element => {
                                             owner={repo.owner.login}
                                             ownerImage={repo.owner.avatar_url}
                                             ownerUrl={repo.owner.html_url}
+                                            language={repo.language}
                                             topics={repo.topics.slice(0, 3)}
+                                            isFavorite={repo.isFavorite}
+                                            handleAddRemoveToFavorite={() =>
+                                                handleAddRemoveToFavorite(repo)
+                                            }
                                         />
                                     ))}
                                 </ul>

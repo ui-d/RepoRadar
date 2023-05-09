@@ -11,9 +11,12 @@ interface ListItemProps {
     forks: number
     url: string
     ownerUrl: string
+    language?: string | null
     owner: string
     ownerImage: string
+    isFavorite?: boolean
     topics?: string[]
+    handleAddRemoveToFavorite: () => void
 }
 export function ListItem({
     name,
@@ -24,13 +27,16 @@ export function ListItem({
     issues,
     stars,
     forks,
+    language,
     description,
     topics,
+    isFavorite,
+    handleAddRemoveToFavorite,
 }: ListItemProps): JSX.Element {
     return (
         <div className="stats flex w-full max-w-full shadow">
-            <div className="stat w-full max-w-xs">
-                <div className="stat-figure text-secondary">
+            <div className="flex w-full max-w-xs">
+                <div className="stat-figure text-secondary pl-5">
                     <div className="avatar online">
                         <div className="w-16 rounded-full">
                             <NextImage
@@ -42,18 +48,21 @@ export function ListItem({
                         </div>
                     </div>
                 </div>
-                <div className="stat-value text-base">{owner}</div>
-                <div className="stat-desc text-accent">
-                    <Link href={ownerUrl}>Follow</Link>{' '}
+                <div className="flex flex-col justify-center pl-4">
+                    <div className="stat-value text-base">{owner}</div>
+                    <div className="stat-desc text-accent">
+                        <Link href={ownerUrl}>Follow</Link>{' '}
+                    </div>
                 </div>
             </div>
             <div className="stat max-w-xl overflow-hidden">
                 <div className="stat-figure text-primary">
                     <svg
+                        onClick={handleAddRemoveToFavorite}
                         xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
+                        fill={isFavorite ? 'currentColor' : 'none'}
                         viewBox="0 0 24 24"
-                        className="inline-block h-8 w-8 stroke-current"
+                        className="inline-block h-8 w-8 cursor-pointer stroke-current transition hover:text-gray-600"
                     >
                         <path
                             strokeLinecap="round"
@@ -79,9 +88,14 @@ export function ListItem({
                         </>
                     )}
                 </div>
-                <div className="stat-value text-primary mb-1 truncate text-2xl">
+                <div className="stat-value text-primary mb-2 truncate text-2xl">
                     <Link className="transition hover:text-gray-600" href={url}>
-                        {name}
+                        {name}{' '}
+                        {!!language && (
+                            <div className="badge badge-outline badge-xs">
+                                {language}
+                            </div>
+                        )}
                     </Link>{' '}
                 </div>
                 <div className="stat-desc line-clamp-2 whitespace-normal">
@@ -100,13 +114,13 @@ export function ListItem({
                         viewBox="0 0 53.867 53.867"
                     >
                         <polygon
-                            fill="#EFCE4A"
+                            fill="#FFFF70"
                             points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798   10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "
                         />
                     </svg>
                 </div>
                 <div className="stat-title">Forks: {forks}</div>
-                <div className="stat-value text-primary text-yellow-300">
+                <div className="stat-value text-primary text-yellow-200">
                     {stars}
                 </div>
                 <div className="stat-desc">Open issues: {issues}</div>
