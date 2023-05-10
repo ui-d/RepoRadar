@@ -36,4 +36,8 @@ export const customReactSelectStyles: StylesConfig<OptionType, false> = {
         ...provided,
         color: '#000',
     }),
+    placeholder: (provided) => ({
+        ...provided,
+        color: '#383838',
+    }),
 }
