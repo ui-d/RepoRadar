@@ -120,5 +120,6 @@ export async function getStaticProps() {
         props: {
             repos,
         },
+        revalidate: 60 * 5,
     }
 }
