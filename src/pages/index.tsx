@@ -6,11 +6,11 @@ import { getRepos } from '@/lib/api'
 import { useRepos } from '@/hooks/useRepos'
 
 import { Container } from '@/components/containers/Container'
-import { SelectElement } from '@/components/forms/select'
+import { SelectElement } from '@/components/forms/Select'
 import { Layout } from '@/components/layout/Layout'
 import { ListItem } from '@/components/list/ListItem'
 import { Loader } from '@/components/loaders/Loader'
-import { Navbar } from '@/components/navigation/navbar'
+import { Navbar } from '@/components/navigation/Navbar'
 import { Seo } from '@/components/Seo'
 import { Tabs } from '@/components/tabs/Tabs'
 

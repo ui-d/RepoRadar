@@ -1859,7 +1859,7 @@
     "@tanstack/query-core" "4.29.5"
     use-sync-external-store "^1.2.0"
 
-"@testing-library/dom@^8.5.0":
+"@testing-library/dom@^8.5.0", "@testing-library/dom@>=7.21.4":
   version "8.13.0"
   resolved "https://registry.npmjs.org/@testing-library/dom/-/dom-8.13.0.tgz"
   integrity sha512-9VHgfIatKNXQNaZTtLnalIy0jNZzY35a4S3oi08YAt9Hv1VsfZ/DfA45lM8D/UhtHBGJ4/lGwp0PZkVndRkoOQ==
@@ -1896,6 +1896,11 @@
     "@babel/runtime" "^7.12.5"
     "@testing-library/dom" "^8.5.0"
     "@types/react-dom" "^18.0.0"
+
+"@testing-library/user-event@^14.4.3":
+  version "14.4.3"
+  resolved "https://registry.npmjs.org/@testing-library/user-event/-/user-event-14.4.3.tgz"
+  integrity sha512-kCUc5MEwaEMakkO5x7aoD+DLi02ehmEM2QCGWvNqAS1dV/fAvORWEjnjsEIvml59M7Y5kCkWN6fCCyPOe8OL6Q==
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -2050,6 +2055,13 @@
   integrity sha512-UxeS+Wtj5bvLRREz9tIgsK4ntCuLDo0EcAcACgw3E+9wE8ePDr9uQpq53MfcyxyIS55xJ+0B6mDS8c4qkkHLBg==
   dependencies:
     "@types/react" "*"
+
+"@types/react-select@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.npmjs.org/@types/react-select/-/react-select-5.0.1.tgz"
+  integrity sha512-h5Im0AP0dr4AVeHtrcvQrLV+gmPa7SA0AGdxl2jOhtwiE6KgXBFSogWw8az32/nusE6AQHlCOHQWjP1S/+oMWA==
+  dependencies:
+    react-select "*"
 
 "@types/react-transition-group@^4.4.0":
   version "4.4.6"
@@ -5790,7 +5802,7 @@ react-is@^17.0.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-select@^5.7.3:
+react-select@*, react-select@^5.7.3:
   version "5.7.3"
   resolved "https://registry.npmjs.org/react-select/-/react-select-5.7.3.tgz"
   integrity sha512-z8i3NCuFFWL3w27xq92rBkVI2onT0jzIIPe480HlBjXJ3b5o6Q+Clp4ydyeKrj9DZZ3lrjawwLC5NGl0FSvUDg==

@@ -9,7 +9,7 @@ import { Container } from '@/components/containers/Container'
 import { Layout } from '@/components/layout/Layout'
 import { ListItem } from '@/components/list/ListItem'
 import { Loader } from '@/components/loaders/Loader'
-import { Navbar } from '@/components/navigation/navbar'
+import { Navbar } from '@/components/navigation/Navbar'
 import { Seo } from '@/components/Seo'
 import { Tabs } from '@/components/tabs/Tabs'
 

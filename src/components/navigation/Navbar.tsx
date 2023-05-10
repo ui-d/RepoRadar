@@ -1,14 +1,16 @@
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import * as React from 'react'
 
 export function Navbar(): JSX.Element {
     const supabase = useSupabaseClient()
     const session = useSession()
+    const router = useRouter()
 
     const handleSignOut = async () => {
         await supabase.auth.signOut()
-        window.location.href = '/login'
+        router.push('/login')
     }
 
     return (

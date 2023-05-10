@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Navbar } from '@/components/navigation/navbar'
+import { Navbar } from '@/components/navigation/Navbar'
 
 interface props {
     children: React.ReactNode
