@@ -2,6 +2,12 @@ import { useCallback, useEffect, useState } from 'react'
 
 import { Repo } from '@/types/GithubApiResponse'
 
+/**
+ * Custom hook to handle the list of repos
+ * @param initialRepos - Initial list of repos
+ * @returns {Object} - Object containing the list of repos, favorites, and functions to handle the list of repos
+ */
+
 export const useRepos = (initialRepos: Repo[]) => {
     const [reposList, setReposList] = useState<Repo[]>(initialRepos)
     const [favorites, setFavorites] = useState<Repo[]>([])

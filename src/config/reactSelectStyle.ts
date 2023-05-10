@@ -6,6 +6,11 @@ type OptionType = {
     label: string | null
 }
 
+/**
+ * Custom styles for react-select
+ * @returns {Object} - Object containing the custom styles
+ */
+
 export const customReactSelectStyles: StylesConfig<OptionType, false> = {
     control: (provided) => ({
         ...provided,
